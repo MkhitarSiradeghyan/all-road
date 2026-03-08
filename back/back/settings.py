@@ -1,5 +1,7 @@
 from pathlib import Path
+import os
 import dj_database_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-kh0*408*t@###n^$4_w_67t$(5vgqyh7op9ze7t+)&+nj22cv9'
@@ -30,17 +32,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres', 
-        'USER': 'postgres', 
-        'PASSWORD': 'postgres', 
-        'HOST': 'localhost', 
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'), conn_max_age=600, ssl_require=True)
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'back.urls'
