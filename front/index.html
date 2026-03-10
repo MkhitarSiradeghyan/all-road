@@ -90,7 +90,7 @@
                             Free.</span></h1>
                     <p class="hero_subtitle">Get your instant quote today — no hidden fees.</p>
                 </div>
-                <form class="form_container" id="form">
+                <form class="form_container" id="form" novalidate>
                     <div class="form_front" id="form_front">
                         <hgroup class="form_title_wrap">
                             <h2 class="form_title">Get a <span class="highlighted">Free Quote</span></h2>
@@ -100,48 +100,90 @@
                             <div class="form_group">
                                 <label class="form_label">Pick-up</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input with_icon" placeholder="Zip Code or City"
-                                        name="pickup">
-                                    <img src="./img/flag.svg" alt="">
+                                    <input required type="text" class="form_input with_icon"
+                                        placeholder="Zip Code or City" name="pickup">
+                                    <svg width="15" height="24" viewBox="0 0 15 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.56983 0C2.94873 0 2.44483 0.50391 2.44483 1.125V21H1.125C0.503902 21 0 21.5039 0 22.125C0 22.7461 0.50391 23.25 1.125 23.25H6.01391C6.63501 23.25 7.13891 22.7461 7.13891 22.125C7.13891 21.5039 6.635 21 6.01391 21H4.69483V13.7049L13.9211 8.60669C14.2793 8.40893 14.502 8.03174 14.502 7.62231C14.502 7.21289 14.2793 6.83569 13.9211 6.63794L4.69483 1.53969V1.125C4.69483 0.50391 4.19092 0 3.56983 0ZM11.0508 7.62232L4.69483 11.1343V4.11035L11.0508 7.62232Z"
+                                            fill="currentColor" />
+                                    </svg>
+                                    <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
+
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Delivery</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input with_icon" placeholder="Zip Code or City"
-                                        name="delivery">
-                                    <img src="./img/map.svg" alt="">
+                                    <input required type="text" class="form_input with_icon"
+                                        placeholder="Zip Code or City" name="delivery">
+                                    <svg width="14" height="20" viewBox="0 0 14 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7 20C5.23333 20 3.79167 19.7208 2.675 19.1625C1.55833 18.6042 1 17.8833 1 17C1 16.6 1.12083 16.2292 1.3625 15.8875C1.60417 15.5458 1.94167 15.25 2.375 15L3.95 16.475C3.8 16.5417 3.6375 16.6167 3.4625 16.7C3.2875 16.7833 3.15 16.8833 3.05 17C3.26667 17.2667 3.76667 17.5 4.55 17.7C5.33333 17.9 6.15 18 7 18C7.85 18 8.67083 17.9 9.4625 17.7C10.2542 17.5 10.7583 17.2667 10.975 17C10.8583 16.8667 10.7083 16.7583 10.525 16.675C10.3417 16.5917 10.1667 16.5167 10 16.45L11.55 14.95C12.0167 15.2167 12.375 15.5208 12.625 15.8625C12.875 16.2042 13 16.5833 13 17C13 17.8833 12.4417 18.6042 11.325 19.1625C10.2083 19.7208 8.76667 20 7 20ZM7.025 14.5C8.675 13.2833 9.91667 12.0625 10.75 10.8375C11.5833 9.6125 12 8.38333 12 7.15C12 5.45 11.4583 4.16667 10.375 3.3C9.29167 2.43333 8.16667 2 7 2C5.83333 2 4.70833 2.43333 3.625 3.3C2.54167 4.16667 2 5.45 2 7.15C2 8.26667 2.40833 9.42917 3.225 10.6375C4.04167 11.8458 5.30833 13.1333 7.025 14.5ZM7 17C4.65 15.2667 2.89583 13.5833 1.7375 11.95C0.579167 10.3167 0 8.71667 0 7.15C0 5.96667 0.2125 4.92917 0.6375 4.0375C1.0625 3.14583 1.60833 2.4 2.275 1.8C2.94167 1.2 3.69167 0.75 4.525 0.45C5.35833 0.15 6.18333 0 7 0C7.81667 0 8.64167 0.15 9.475 0.45C10.3083 0.75 11.0583 1.2 11.725 1.8C12.3917 2.4 12.9375 3.14583 13.3625 4.0375C13.7875 4.92917 14 5.96667 14 7.15C14 8.71667 13.4208 10.3167 12.2625 11.95C11.1042 13.5833 9.35 15.2667 7 17ZM7 9C7.55 9 8.02083 8.80417 8.4125 8.4125C8.80417 8.02083 9 7.55 9 7C9 6.45 8.80417 5.97917 8.4125 5.5875C8.02083 5.19583 7.55 5 7 5C6.45 5 5.97917 5.19583 5.5875 5.5875C5.19583 5.97917 5 6.45 5 7C5 7.55 5.19583 8.02083 5.5875 8.4125C5.97917 8.80417 6.45 9 7 9Z"
+                                            fill="currentColor" />
+                                    </svg>
+<svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Vehicle Make</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input" placeholder="Enter make" name="vehicle_make">
+                                    <input required type="text" class="form_input" placeholder="Enter make"
+                                        name="vehicle_make">
+                                        <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Vehicle Model</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input" placeholder="Enter make" name="vehicle_model">
+                                    <input required type="text" class="form_input" placeholder="Enter make"
+                                        name="vehicle_model">
+                                        <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Year</label>
                                 <div class="input_wrap">
-                                    <select class="year_select" id="year" name="year"></select>
+                                    <div class="select_wrap" id="year_select_wrap">
+                                        <div class="selected" id="selected_year">Select Year</div>
+                                        <div class="options" id="year_options"></div>
+                                        <div class="error_text" style="display:none;">This field is required</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Pickup Date</label>
                                 <div class="input_wrap">
-                                    <input type="date" class="form_input" value="2026-03-05" name="pickup_date">
+                                    <input required type="date" class="form_input" name="pickup_date">
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Transport Type</label>
                                 <div class="radio_wrap">
                                     <label class="radio_label">
-                                        <input type="radio" name="transport_type" class="form_input" value="Open">
+                                        <input required type="radio" name="transport_type" class="form_input"
+                                            value="Open">
                                         <span>Open</span>
                                     </label>
                                     <label class="radio_label">
@@ -154,7 +196,7 @@
                                 <label class="form_label">Vehicle Condition</label>
                                 <div class="radio_wrap">
                                     <label class="radio_label">
-                                        <input type="radio" name="vehicle_condition" class="form_input"
+                                        <input required type="radio" name="vehicle_condition" class="form_input"
                                             value="Operable">
                                         <span>Operable</span>
                                     </label>
@@ -180,25 +222,53 @@
                             <div class="form_group">
                                 <label class="form_label">First Name*</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input" placeholder="Your name" name="first_name">
+                                    <input required type="text" class="form_input" placeholder="Your name"
+                                        name="first_name">
+                                        <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Last Name*</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input" placeholder="Your last name" name="last_name">
+                                    <input required type="text" class="form_input" placeholder="Your last name"
+                                        name="last_name">
+                                        <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Phone*</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input" placeholder="Your phone number" name="phone">
+                                    <input required type="tel" class="form_input" placeholder="Your phone number"
+                                        name="phone">
+                                        <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="form_group">
                                 <label class="form_label">Email*</label>
                                 <div class="input_wrap">
-                                    <input type="text" class="form_input" placeholder="Your email address" name="email">
+                                    <input required type="email" class="form_input" placeholder="Your email address"
+                                        name="email">
+                                        <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.6 14.6L15.65 7.55L14.25 6.15L8.6 11.8L5.75 8.95L4.35 10.35L8.6 14.6ZM10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM10 18C12.2333 18 14.125 17.225 15.675 15.675C17.225 14.125 18 12.2333 18 10C18 7.76667 17.225 5.875 15.675 4.325C14.125 2.775 12.2333 2 10 2C7.76667 2 5.875 2.775 4.325 4.325C2.775 5.875 2 7.76667 2 10C2 12.2333 2.775 14.125 4.325 15.675C5.875 17.225 7.76667 18 10 18Z"
+                                            fill="#00B67A" />
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -633,7 +703,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">01.</div> How do I get started?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -644,7 +713,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">02.</div> How are payments handled?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -655,7 +723,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">03.</div> Can I track the progress of my shipment?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -666,7 +733,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">04.</div> What types of vehicles can you transport?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -677,7 +743,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">05.</div> Is my vehicle insured during transport?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -688,7 +753,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">06.</div> What if my car is damaged during shipment?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -699,7 +763,6 @@
                             <div class="faq_item_title">
                                 <div class="faq_bold">07.</div> How do I prepare my vehicle for transport?
                             </div>
-                            <div class="faq_item_sign">+</div>
                         </div>
                         <p class="faq_item_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et voluptates
                             cumque iure ex labore ullam a repellat atque ut. Iusto.</p>
@@ -803,18 +866,7 @@
 
         </div>
     </div>
-    <script>
-        const select = document.getElementById('year')
-        const currentYear = new Date().getFullYear()
-        const startYear = 1950
 
-        for (let year = currentYear; year >= startYear; year--) {
-            const option = document.createElement('option')
-            option.value = year
-            option.textContent = year
-            select.appendChild(option)
-        }
-    </script>
     <script src="script.js"></script>
 </body>
 

@@ -11,6 +11,40 @@ const flipFW = document.getElementById("flip_fw");
 const flipBW = document.getElementById("flip_bw");
 const form = document.getElementById("form");
 
+const yearWrap = document.getElementById("year_select_wrap");
+const selected = document.getElementById("selected_year");
+const optionsContainer = document.getElementById("year_options");
+
+const currentYear = new Date().getFullYear();
+
+for (let y = currentYear; y >= 1950; y--) {
+  const opt = document.createElement("div");
+  opt.className = "option";
+  opt.textContent = y;
+  opt.dataset.value = y;
+  optionsContainer.appendChild(opt);
+}
+
+selected.addEventListener("click", () => {
+  optionsContainer.style.display = optionsContainer.style.display === "block" ? "none" : "block";
+});
+
+optionsContainer.addEventListener("click", e => {
+  if (e.target.classList.contains("option")) {
+    selected.textContent = e.target.textContent;
+    selected.dataset.value = e.target.dataset.value;
+    optionsContainer.style.display = "none";
+    selected.classList.remove("error");
+    yearWrap.querySelector(".error_text").style.display = "none";
+  }
+});
+
+document.addEventListener("click", e => {
+  if (!yearWrap.contains(e.target)) {
+    optionsContainer.style.display = "none";
+  }
+});
+
 const navlinks = document.querySelectorAll(".header_navlink")
 const burger_checkbox = document.getElementById("burger_checkbox")
 navlinks.forEach(navlink => {
@@ -111,31 +145,74 @@ track.addEventListener('touchend', e => {
 createDots();
 updateSlider();
 
-form.addEventListener("submit", async e => {
-    e.preventDefault();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => data[key] = value);
-    try {
-        const response = await fetch("https://all-road.onrender.com/api/submit/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
+  let isValid = true;
 
-        if (response.ok) {
-            alert("Form submitted successfully");
-            form.reset();
-            formFront.style.transform = "rotateY(0deg)";
-            formBack.style.transform = "rotateY(-180deg)";
-        } else {
-            alert("Error submitting form");
-        }
-    } catch (error) {
-        console.error(error);
-        alert("Network error");
+  const requiredInputs = form.querySelectorAll("input[required]");
+  requiredInputs.forEach(input => {
+    const wrap = input.closest(".input_wrap") || input.closest(".radio_wrap");
+    const oldError = wrap.querySelector(".error_text");
+    if (oldError) oldError.remove();
+    input.classList.remove("error", "valid");
+
+    if (!input.value.trim()) {
+      isValid = false;
+      input.classList.add("error");
+      const err = document.createElement("div");
+      err.className = "error_text";
+      err.textContent = "This field is required";
+      wrap.appendChild(err);
+    } else {
+      input.classList.add("valid");
     }
+  });
+
+  // кастомный select
+  if (!selected.dataset.value) {
+    isValid = false;
+    selected.classList.remove("valid");
+    selected.classList.add("error");
+    yearWrap.querySelector(".error_text").style.display = "block";
+  } else {
+    selected.classList.remove("error");
+    selected.classList.add("valid");
+    yearWrap.querySelector(".error_text").style.display = "none";
+  }
+
+  if (!isValid) return;
+
+  const formData = new FormData(form);
+  formData.append("year", selected.dataset.value);
+
+  const data = {};
+  formData.forEach((v,k) => data[k] = v);
+
+  try {
+    const response = await fetch("https://all-road.onrender.com/api/submit/", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert("Form submitted successfully");
+      form.reset();
+      selected.textContent = "Select Year";
+      selected.dataset.value = "";
+      selected.classList.remove("valid", "error");
+      requiredInputs.forEach(input => input.classList.remove("valid", "error"));
+      formFront.style.transform = "rotateY(0deg)";
+      formBack.style.transform = "rotateY(-180deg)";
+    } else {
+      alert("Error submitting form");
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Network error");
+  }
 });
 
 flipFW.addEventListener("click", () => {
