@@ -11,6 +11,15 @@ const flipFW = document.getElementById("flip_fw");
 const flipBW = document.getElementById("flip_bw");
 const form = document.getElementById("form");
 
+const navlinks = document.querySelectorAll(".header_navlink")
+const burger_checkbox = document.getElementById("burger_checkbox")
+navlinks.forEach(navlink => {
+
+    navlink.addEventListener("click", () => {
+        burger_checkbox.checked = false
+    })
+})
+
 let index = 0;
 let slidesPerView = getSlidesPerView();
 
@@ -67,7 +76,38 @@ window.addEventListener('resize', () => {
         updateSlider();
     }
 });
+let startX = 0;
+let isDragging = false;
 
+track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+track.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+
+    track.style.transform = `translateX(${-index * (slides[0].offsetWidth + 30) + diff}px)`;
+});
+
+track.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (diff > 50) {
+        index -= slidesPerView;
+        if (index < 0) index = slides.length - slidesPerView;
+    } else if (diff < -50) {
+        index += slidesPerView;
+        if (index >= slides.length) index = 0;
+    }
+
+    updateSlider();
+});
 createDots();
 updateSlider();
 
@@ -78,7 +118,7 @@ form.addEventListener("submit", async e => {
     const data = {};
     formData.forEach((value, key) => data[key] = value);
     try {
-        const response = await fetch("http://localhost:8000/api/submit/", {
+        const response = await fetch("https://all-road.onrender.com/api/submit/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -107,3 +147,266 @@ flipBW.addEventListener("click", () => {
     formFront.style.transform = "rotateY(0deg)";
     formBack.style.transform = "rotateY(-180deg)";
 });
+
+const modal = document.getElementById("main_modal")
+const modalBody = document.getElementById("modal_body")
+const closeBtn = document.querySelector(".modal_close")
+
+/* -------------------------
+    EXTRA CONTENT
+-------------------------- */
+
+const serviceExtra = {
+    "Car Hauling": `
+        <ul>
+            <li>Door to door delivery</li>
+            <li>Licensed carriers</li>
+            <li>Insurance included</li>
+        </ul>
+    `,
+    "Trailer Towing": `
+        <ul>
+            <li>All trailer types supported</li>
+            <li>Fast scheduling</li>
+            <li>Nationwide coverage</li>
+        </ul>
+    `,
+    "Motorcycle Shipping": `
+        <ul>
+            <li>Soft tie straps</li>
+            <li>Safe loading</li>
+            <li>Experienced drivers</li>
+        </ul>
+    `,
+    "Enclosed Shipping": `
+        <ul>
+            <li>Fully enclosed trailers</li>
+            <li>Weather protection</li>
+            <li>Premium transport</li>
+        </ul>
+    `,
+    "Heavy Equipment": `
+        <ul>
+            <li>Industrial equipment transport</li>
+            <li>Specialized carriers</li>
+            <li>Oversized cargo support</li>
+        </ul>
+    `,
+    "Boat Shipping": `
+        <ul>
+            <li>Boat and yacht transport</li>
+            <li>Secure loading</li>
+            <li>Nationwide delivery</li>
+        </ul>
+    `
+}
+const howExtra = {
+    "01. Get a Quote": "Receive a detailed price estimate quickly and accurately.",
+    "02. Book": "Reserve your shipment with flexible scheduling options.",
+    "03. We Schedule": "We arrange the transport according to your preferences.",
+    "04. Pickup": "Your vehicle is collected safely and on time.",
+    "05. Delivery": "Delivery at your chosen location, hassle-free."
+}
+/* -------------------------
+   TEMPLATES
+-------------------------- */
+
+function serviceTemplate(img, title, text, extra) {
+
+    return `
+        <div class="modal_service">
+
+            <div class="modal_service_img">
+                <img src="${img}" alt="">
+            </div>
+
+            <h2 class="modal_service_title">${title}</h2>
+
+            <p class="modal_service_text">${text}</p>
+
+            <div class="modal_service_extra">
+                ${extra}
+            </div>
+
+        </div>
+    `
+}
+
+function documentTemplate(title, text,  content) {
+
+    return `
+        <div class="modal_document">
+            <hgroup class="modal_legal_hgroup">
+            <h1 class="modal_legal_title">Legal Terms</h1>
+            <h2 class="common_title">${title}</h2>
+            </hgroup>
+            <p class="modal_legal_text">${text}</p>
+            <div class="modal_document_content">
+                ${content}
+            </div>
+
+        </div>
+    `
+}
+function howTemplate(img, title, text, extra) {
+    return `
+        <div class="how_item_modal">
+                <img src="${img}" alt="">
+            <h3 class="how_item_title">${title}</h3>
+            <p class="how_text">${text}</p>
+            ${extra ? `<p class="how_extra">${extra}</p>` : ''}
+        </div>
+    `
+}
+
+/* -------------------------
+   SERVICE CARDS
+-------------------------- */
+
+const services = document.querySelectorAll(".services_item")
+
+services.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        const img = item.querySelector("img").src
+        const title = item.querySelector(".services_item_title").textContent
+        const text = item.querySelector(".services_item_text").textContent
+
+        const extra = serviceExtra[title] || "<p>More details coming soon.</p>"
+
+        modalBody.innerHTML = serviceTemplate(img, title, text, extra)
+
+        modal.classList.add("active")
+
+        document.body.style.overflow = "hidden"
+
+    })
+
+})
+
+/* -------------------------
+   TERMS / PRIVACY
+-------------------------- */
+
+const docLinks = document.querySelectorAll(".legal_link")
+
+docLinks.forEach(link => {
+
+    link.addEventListener("click", e => {
+
+        e.preventDefault()
+
+        const type = link.dataset.type
+
+        if (type === "terms") {
+
+            modalBody.innerHTML = documentTemplate(
+                '<span class="highlighted">Terms</span> & Conditions',
+                "By using our services, you agree to follow these terms and conditions for access.",
+                `
+                <ol>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                </ol>
+                `
+            )
+
+        }
+
+        if (type === "privacy") {
+
+            modalBody.innerHTML = documentTemplate(
+                'Privacy <span class="highlighted">Policy</span>',
+                "All Road Carriers (“ARC”) values your privacy. To provide accurate pricing and quality service, we collect certain information about you and may share it with necessary partners. This Privacy Policy explains what we collect, why we collect it, and how we protect it. By using our website, you agree to the current version of this Policy. For more details about how our site and services operate, please review our Terms & Conditions",
+                `
+                <ol>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                </ol>
+                
+                `
+            )
+
+        }
+
+        modal.classList.add("active")
+
+        document.body.style.overflow = "hidden"
+
+    })
+
+})
+
+/* -------------------------
+   HOW ITEMS MODAL
+------------------------- */
+const howItems = document.querySelectorAll(".how_item")
+
+howItems.forEach(item => {
+    item.addEventListener("click", () => {
+        const img = item.querySelector("img").src
+        const title = item.querySelector(".how_item_title").textContent
+        const text = item.querySelector(".how_text").textContent
+        const extra = howExtra[title] || ""
+
+        modalBody.innerHTML = howTemplate(img, title, text, extra)
+        modal.classList.add("active")
+        document.body.style.overflow = "hidden"
+    })
+})
+/* -------------------------
+   CLOSE MODAL
+-------------------------- */
+
+function closeModal() {
+
+    modal.classList.remove("active")
+
+    document.body.style.overflow = ""
+
+}
+
+closeBtn.addEventListener("click", closeModal)
+
+modal.addEventListener("click", e => {
+
+    if (e.target === modal) {
+
+        closeModal()
+
+    }
+
+})
+
+/* -------------------------
+   ESC KEY CLOSE
+-------------------------- */
+
+document.addEventListener("keydown", e => {
+
+    if (e.key === "Escape") {
+
+        closeModal()
+
+    }
+
+})
