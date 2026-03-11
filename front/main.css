@@ -322,14 +322,11 @@ option {
 }
 
 .hero {
-    background: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%) no-repeat top left / 100vmin;
+    background: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%), url("./img/hero-800.webp") no-repeat top left / 100vmin;
     position: relative;
     padding: 40px 0;
 }
-.hero_bg {
-    height: 100%;
-    position: absolute;
-}
+
 .hero_wrap {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -479,22 +476,22 @@ option {
 }
 .select_wrap {
   position: relative;
-  width: 200px; /* можно под размер формы */
+  width: 200px;
   font-family: sans-serif;
 }
 
 .selected {
   padding: 8px 12px;
-  border: 2px solid #333;
+  border: 1px solid var(--color-neutral-4);
   border-radius: 6px;
-  background: #fff;
+  background: var(--color-light);
   cursor: pointer;
   position: relative;
   user-select: none;
 }
 
 .selected.error {
-  border-color: red;
+  border-color: #e53935;
 }
 .selected::after {
   content: '›';
@@ -529,9 +526,6 @@ option {
   gap: 10px;
   z-index: 99;
   padding: 10px;
-}
-::-webkit-scrollbar-button{
-    background: #000;
 }
 
 .option {
