@@ -322,7 +322,7 @@ option {
 }
 
 .hero {
-    background: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%), url("./img/hero.png") no-repeat top left / 100vmin;
+    background: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%), url("./img/hero-800.webp") no-repeat top left / 100vmin;
     position: relative;
     padding: 40px 0;
 }
@@ -1536,7 +1536,9 @@ display: block;
         flex-direction: column;
         gap: 12px;
     }
-
+    .hero {
+        background-image: url("./img/hero-400.webp");
+    }
     .hero_wrap {
         display: flex;
         flex-direction: column;
