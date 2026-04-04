@@ -4,6 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Safe, fast, and hassle-free car shipping services. Get your instant free quote today with no hidden fees. Trusted door-to-door auto transport across all states.">
+    <meta name="keywords" content="car shipping, auto transport, vehicle shipping, ship car safely, free car shipping quote">
+    <meta property="og:type" content="website">
+<meta property="og:url" content="https://allroadcarriers.com/">
+<meta property="og:title" content="Ship Your Car Safely, Quickly and Hassle-Free">
+<meta property="og:description" content="Get an instant quote for professional car hauling. No hidden fees, door-to-door service.">
+<meta property="og:image" content="https://allroadcarriers.com/images/og-main-banner.jpg">
     <title>All Road Carriers</title>
     <link rel="preload" as="image" href="./img/hero-800.webp">
     <link rel="preload" as="image" href="./img/hero-400.webp">
@@ -175,7 +182,7 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-  <label class="form_label" for="year_select">Year</label>
+  <label class="form_label" for="year_label">Year</label>
   
   <div class="input_wrap">
     <select id="year_select" name="year" required style="display:none;">
@@ -199,33 +206,33 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label for="transport_type"  class="form_label">Transport Type</label>
+                                    <div  class="form_label">Transport Type</div>
                                     <div class="radio_wrap">
-                                        <div class="radio_label">
-                                            <input id="transport_type" required type="radio" name="transport_type" class="form_input"
+                                        <label for="open" class="radio_label">
+                                            <input id="open" required type="radio" name="transport_type" class="form_input"
                                                 value="Open">
                                             <span>Open</span>
-                                        </div>
-                                        <div class="radio_label">
-                                            <input type="radio" name="transport_type" class="form_input"
+                                        </label>
+                                        <label for="enclosed" class="radio_label">
+                                            <input id="enclosed" type="radio" name="transport_type" class="form_input"
                                                 value="Enclosed">
                                             <span>Enclosed</span>
-                                        </div>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label for="condition" class="form_label">Vehicle Condition</label>
+                                    <div class="form_label">Vehicle Condition</div>
                                     <div class="radio_wrap">
-                                        <div class="radio_label">
-                                            <input id="condition" required type="radio" name="vehicle_condition" class="form_input"
+                                        <label for="operable" class="radio_label">
+                                            <input id="operable" required type="radio" name="vehicle_condition" class="form_input"
                                                 value="Operable">
                                             <span>Operable</span>
-                                        </div>
-                                        <div class="radio_label">
-                                            <input type="radio" name="vehicle_condition" class="form_input"
+                                        </label>
+                                        <label for="inoperable" class="radio_label">
+                                            <input id="inoperable" type="radio" name="vehicle_condition" class="form_input"
                                                 value="Inoperable">
                                             <span>Inoperable</span>
-                                        </div>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -935,7 +942,7 @@
                         <div class="footer_item footer_media_box">
                             <h3 class="footer_item_title">Follow Us</h3>
                             <div class="footer_item_box">
-                                <a href="" class="footer_medialink">
+                                <a href="" class="footer_medialink" aria-label="Visit our Facebook page">
                                     <svg class="media_icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                         viewBox="0 0 50 50">
                                         <path fill="currentColor"
@@ -943,7 +950,7 @@
                                         </path>
                                     </svg>
                                 </a>
-                                <a href="" class="footer_medialink">
+                                <a href="" class="footer_medialink" aria-label="Follow us on Instagram">
                                     <svg class="media_icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                         viewBox="0 0 50 50">
                                         <path fill="currentColor"
@@ -951,7 +958,7 @@
                                         </path>
                                     </svg>
                                 </a>
-                                <a href="" class="footer_medialink">
+                                <a href="" class="footer_medialink" aria-label="Watch our videos on YouTube">
                                     <svg class="media_icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                         viewBox="0 0 50 50">
                                         <path fill="currentColor"
