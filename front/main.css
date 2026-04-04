@@ -14,15 +14,15 @@
     --color-neutral-5: #ABABAB;
     /********** Typography **********/
     /* Font Sizes */
-    --font-size-1: 12px;
-    --font-size-2: 16px;
-    --font-size-3: 20px;
-    --font-size-4: 24px;
-    --font-size-5: 28px;
-    --font-size-6: 32px;
-    --font-size-7: 36px;
-    --font-size-8: 48px;
-    --font-size-9: 64px;
+    --font-size-1: 12px; 
+  --font-size-2: 14px;
+  --font-size-3: clamp(16px, 4vw, 20px);
+  --font-size-4: clamp(18px, 5vw, 24px);
+  --font-size-5: clamp(20px, 6vw, 28px);
+  --font-size-6: clamp(22px, 7vw, 32px);
+  --font-size-7: clamp(24px, 8vw, 36px);
+  --font-size-8: clamp(28px, 10vw, 48px);
+  --font-size-9: clamp(32px, 12vw, 64px);
     /* Font Families */
     --font-family-1: "Lexend", sans-serif;
     --font-family-2: "Inter", sans-serif;
@@ -72,12 +72,15 @@ input {
     font-size: var(--font-size-2);
     outline: none;
 }
+
 input:disabled {
     background: var(--color-neutral-5);
 }
+
 input[type="radio"]:checked {
     color: #f0f;
 }
+
 button {
     border: none;
     white-space: nowrap;
@@ -317,7 +320,7 @@ button {
 }
 
 .hero {
-    background: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%), url("./img/hero-800.webp") no-repeat top left / 100vmin;
+    background: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%) no-repeat, url("./img/hero-800.webp") no-repeat top left / 100vmin;
     position: relative;
     padding: 40px 0;
 }
@@ -469,88 +472,92 @@ button {
     pointer-events: none;
     transition: color var(--transition);
 }
+
 .select_wrap {
-  position: relative;
-  width: 200px;
-  font-family: sans-serif;
+    position: relative;
+    width: 200px;
+    font-family: sans-serif;
 }
 
 .selected {
-  padding: 10px;
-  border: 1px solid var(--color-neutral-4);
-  background: #fff;
-  border-radius: 6px;
-  font-size: var(--font-size-2);
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  color: var(--color-dark);
+    padding: 10px;
+    border: 1px solid var(--color-neutral-4);
+    background: #fff;
+    border-radius: 6px;
+    font-size: var(--font-size-2);
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    color: var(--color-dark);
 }
 
 .selected.error {
-  border-color: #e53935;
+    border-color: #e53935;
 }
+
 .selected::after {
-  content: '›';
-  rotate: 90deg;
-  transform-origin: center;
-  display: block;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  translate: 0 -50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--font-size-4);
-  color: var(--color-dark);
-  pointer-events: none;
+    content: '›';
+    rotate: 90deg;
+    transform-origin: center;
+    display: block;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    translate: 0 -50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size-4);
+    color: var(--color-dark);
+    pointer-events: none;
 }
+
 .options {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-2);
-  background: var(--color-light);
-  max-height: 150px;
-  overflow-y: auto;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 99;
-  padding: 10px;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-2);
+    background: var(--color-light);
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 99;
+    padding: 10px;
 }
 
 .option {
-  padding: 10px;
-  border-radius: var(--radius-2);
-  cursor: pointer;
-  background: var(--color-light);
-  transition: background, color var(--transition);
+    padding: 10px;
+    border-radius: var(--radius-2);
+    cursor: pointer;
+    background: var(--color-light);
+    transition: background, color var(--transition);
 }
 
 .option:hover {
     background: var(--color-neutral-1);
     color: var(--color-primary);
     transition: background, color var(--transition);
-
 }
 
 .error_text {
-  color: red;
-  font-size: var(--font-size-1);
-  margin-top: 4px;
+    color: red;
+    font-size: var(--font-size-1);
+    margin-top: 4px;
 }
+
 .form_input.valid,
 .selected.valid,
 .form_input.valid:hover,
 .selected.valid:hover {
-  border-color: #00B67A;
+    border-color: #00B67A;
 }
+
 .valid_check {
     display: none;
     position: absolute;
@@ -558,32 +565,34 @@ button {
     right: 10px;
     translate: 0 -50%;
 }
+
 .form_input.valid ~ .valid_check {
-display: block;
+    display: block;
 }
 
 .with_icon {
     padding-left: 36px;
 }
-.form_input.error,.form_input.error:hover {
-  border: 1px solid #e53935;
+
+.form_input.error,
+.form_input.error:hover {
+    border: 1px solid #e53935;
 }
 
 .form_input {
     width: 100%;
     transition: border-color var(--transition);
 }
+
 .form_input:hover {
     border-color: var(--color-dark);
     transition: border-color var(--transition);
 }
 
-.input_wrap:hover svg{
+.input_wrap:hover svg {
     color: var(--color-dark);
     transition: color var(--transition);
-
 }
-
 
 .year_select {
     width: 100%;
@@ -674,6 +683,12 @@ display: block;
     font-weight: 400;
     font-size: var(--font-size-3);
     flex-grow: 1;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cta {
@@ -1089,7 +1104,9 @@ display: block;
     border: none;
     border-top: 1px solid var(--color-neutral-4);
 }
-
+.review_text {
+    flex-grow: 1;
+}
 .review_author {
     font-style: normal;
 }
@@ -1264,10 +1281,12 @@ display: block;
     overflow: hidden;
     transition: var(--transition);
 }
+
 .footer a:not(.footer_medialink):hover {
     text-decoration: underline;
     font-weight: 600;
 }
+
 .footer_wrap {
     border: solid var(--color-neutral-4);
     border-width: 1px 0;
@@ -1530,9 +1549,11 @@ display: block;
         flex-direction: column;
         gap: 12px;
     }
+
     .hero {
-        background-image: url("./img/hero-400.webp");
+        background-image: linear-gradient(to right, #f7f7f7 0, #f7f7f740 30%, #f7f7f7e0 100%) no-repeat, url("./img/hero-400.webp") no-repeat top left / 100%;
     }
+
     .hero_wrap {
         display: flex;
         flex-direction: column;

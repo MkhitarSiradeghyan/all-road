@@ -274,19 +274,17 @@ function fillModal(contentHTML) {
 }
 
 /* Services */
-const serviceExtra = { /* ...твой объект ... */ };
 services.forEach(item => {
   item.addEventListener("click", () => {
     const img = item.querySelector("img").src;
     const title = item.querySelector(".services_item_title").textContent;
     const text = item.querySelector(".services_item_text").textContent;
-    const extra = serviceExtra[title] || "<p>More details coming soon.</p>";
+   
     fillModal(`
       <div class="modal_service">
         <div class="modal_service_img"><img src="${img}" alt=""></div>
         <h2 class="modal_service_title">${title}</h2>
         <p class="modal_service_text">${text}</p>
-        <div class="modal_service_extra">${extra}</div>
       </div>
     `);
   });
