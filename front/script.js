@@ -28,44 +28,72 @@ const burger_checkbox = document.getElementById("burger_checkbox");
 const services = document.querySelectorAll(".services_item");
 const docLinks = document.querySelectorAll(".legal_link");
 const howItems = document.querySelectorAll(".how_item");
-
 const currentYear = new Date().getFullYear();
+const realSelect = document.getElementById('year_select'); // Наш скрытый селект
+
 
 /* -------------------------
    CUSTOM SELECT YEAR
 -------------------------- */
-// Create options via DocumentFragment
 const optionsFragment = document.createDocumentFragment();
+
 for (let y = currentYear; y >= 1950; y--) {
+  // 1. Создаем кастомный DIV (UI)
   const opt = document.createElement("div");
   opt.className = "option";
   opt.textContent = y;
   opt.dataset.value = y;
+  opt.setAttribute('role', 'option'); // Для скринридеров
   optionsFragment.appendChild(opt);
+
+  // 2. Создаем реальный OPTION для SEO/форм
+  const realOpt = document.createElement("option");
+  realOpt.value = y;
+  realOpt.textContent = y;
+  realSelect.appendChild(realOpt);
 }
 optionsContainer.appendChild(optionsFragment);
 
-// Toggle options visibility
+// Переключение видимости
 selected.addEventListener("click", () => {
-  optionsContainer.style.display = optionsContainer.style.display === "block" ? "none" : "block";
+  const isOpened = optionsContainer.style.display === "block";
+  optionsContainer.style.display = isOpened ? "none" : "block";
+  // Обновляем состояние для скринридеров
+  yearWrap.setAttribute('aria-expanded', !isOpened);
 });
 
-// Select option
+// Выбор опции
 optionsContainer.addEventListener("click", e => {
   const target = e.target;
   if (target.classList.contains("option")) {
+    const val = target.dataset.value;
+
+    // Синхронизация текста и data-аттрибута
     selected.textContent = target.textContent;
-    selected.dataset.value = target.dataset.value;
+    selected.dataset.value = val;
+    
+    // КРИТИЧНО ДЛЯ SEO: обновляем значение в скрытом селекте
+    realSelect.value = val;
+    
+    // Генерируем событие 'change', чтобы другие скрипты (если есть) узнали о выборе
+    realSelect.dispatchEvent(new Event('change'));
+
     optionsContainer.style.display = "none";
+    yearWrap.setAttribute('aria-expanded', 'false');
+    
+    // Убираем ошибки
     selected.classList.remove("error");
     const err = yearWrap.querySelector(".error_text");
     if (err) err.style.display = "none";
   }
 });
 
-// Click outside closes options
+// Закрытие при клике вовне
 document.addEventListener("click", e => {
-  if (!yearWrap.contains(e.target)) optionsContainer.style.display = "none";
+  if (!yearWrap.contains(e.target)) {
+    optionsContainer.style.display = "none";
+    yearWrap.setAttribute('aria-expanded', 'false');
+  }
 });
 
 /* -------------------------
@@ -103,6 +131,7 @@ function createDots() {
   dotsContainer.innerHTML = '';
   for (let i = 0; i < pages; i++) {
     const btn = document.createElement('button');
+    btn.setAttribute("aria-label", `Go to ${i + 1} page`)
     btn.addEventListener('click', () => {
       index = i * slidesPerView;
       updateSlider();

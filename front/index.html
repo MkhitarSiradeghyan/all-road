@@ -130,9 +130,9 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Delivery</label>
+                                    <label for="delivery" class="form_label">Delivery</label>
                                     <div class="input_wrap">
-                                        <input required type="text" class="form_input with_icon"
+                                        <input id="delivery" required type="text" class="form_input with_icon"
                                             placeholder="Zip Code or City" name="delivery">
                                         <svg width="14" height="20" viewBox="0 0 14 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -149,9 +149,9 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Vehicle Make</label>
+                                    <label for="vehicle_make" class="form_label">Vehicle Make</label>
                                     <div class="input_wrap">
-                                        <input required type="text" class="form_input" placeholder="Enter make"
+                                        <input id="vehicle_make" required type="text" class="form_input" placeholder="Enter make"
                                             name="vehicle_make">
                                         <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -162,9 +162,9 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Vehicle Model</label>
+                                    <label for="vehicle_model" class="form_label">Vehicle Model</label>
                                     <div class="input_wrap">
-                                        <input required type="text" class="form_input" placeholder="Enter make"
+                                        <input id="vehicle_model" required type="text" class="form_input" placeholder="Enter make"
                                             name="vehicle_model">
                                         <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -175,49 +175,57 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Year</label>
+  <label class="form_label" for="year_select">Year</label>
+  
+  <div class="input_wrap">
+    <select id="year_select" name="year" required style="display:none;">
+      <option value="">Select Year</option>
+      </select>
+
+    <div class="select_wrap" id="year_select_wrap" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="year_label">
+      <div class="selected" id="selected_year" tabindex="0">Select Year</div>
+      
+      <div class="options" id="year_options" role="listbox">
+         </div>
+      
+      <div class="error_text" style="display:none;" role="alert">This field is required</div>
+    </div>
+  </div>
+</div>
+                                <div class="form_group">
+                                    <label for="pickup_date" class="form_label">Pickup Date</label>
                                     <div class="input_wrap">
-                                        <div class="select_wrap" id="year_select_wrap">
-                                            <div class="selected" id="selected_year">Select Year</div>
-                                            <div class="options" id="year_options"></div>
-                                            <div class="error_text" style="display:none;">This field is required</div>
+                                        <input id="pickup_date" required type="date" class="form_input" name="pickup_date">
+                                    </div>
+                                </div>
+                                <div class="form_group">
+                                    <label for="transport_type"  class="form_label">Transport Type</label>
+                                    <div class="radio_wrap">
+                                        <div class="radio_label">
+                                            <input id="transport_type" required type="radio" name="transport_type" class="form_input"
+                                                value="Open">
+                                            <span>Open</span>
+                                        </div>
+                                        <div class="radio_label">
+                                            <input type="radio" name="transport_type" class="form_input"
+                                                value="Enclosed">
+                                            <span>Enclosed</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Pickup Date</label>
-                                    <div class="input_wrap">
-                                        <input required type="date" class="form_input" name="pickup_date">
-                                    </div>
-                                </div>
-                                <div class="form_group">
-                                    <label class="form_label">Transport Type</label>
+                                    <label for="condition" class="form_label">Vehicle Condition</label>
                                     <div class="radio_wrap">
-                                        <label class="radio_label">
-                                            <input required type="radio" name="transport_type" class="form_input"
-                                                value="Open">
-                                            <span>Open</span>
-                                        </label>
-                                        <label class="radio_label">
-                                            <input type="radio" name="transport_type" class="form_input"
-                                                value="Enclosed">
-                                            <span>Enclosed</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form_group">
-                                    <label class="form_label">Vehicle Condition</label>
-                                    <div class="radio_wrap">
-                                        <label class="radio_label">
-                                            <input required type="radio" name="vehicle_condition" class="form_input"
+                                        <div class="radio_label">
+                                            <input id="condition" required type="radio" name="vehicle_condition" class="form_input"
                                                 value="Operable">
                                             <span>Operable</span>
-                                        </label>
-                                        <label class="radio_label">
+                                        </div>
+                                        <div class="radio_label">
                                             <input type="radio" name="vehicle_condition" class="form_input"
                                                 value="Inoperable">
                                             <span>Inoperable</span>
-                                        </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -234,10 +242,9 @@
                             <div class="form_wrap">
                                 <h3 class="form_add_title">Where should we send your quote?</h3>
                                 <div class="form_group">
-                                    <label class="form_label">First Name*</label>
+                                    <label for="first_name" class="form_label">First Name*</label>
                                     <div class="input_wrap">
-                                        <input required type="text" class="form_input" placeholder="Your name"
-                                            name="first_name">
+                                        <input id="first_name" required type="text" class="form_input" placeholder="Your name" name="first_name">
                                         <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -247,9 +254,9 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Last Name*</label>
+                                    <label for="last_name" class="form_label">Last Name*</label>
                                     <div class="input_wrap">
-                                        <input required type="text" class="form_input" placeholder="Your last name"
+                                        <input id="last_name" required type="text" class="form_input" placeholder="Your last name"
                                             name="last_name">
                                         <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -260,9 +267,9 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Phone*</label>
+                                    <label for="phone" class="form_label">Phone*</label>
                                     <div class="input_wrap">
-                                        <input required type="tel" class="form_input" placeholder="Your phone number"
+                                        <input id="phone" required type="tel" class="form_input" placeholder="Your phone number"
                                             name="phone">
                                         <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -273,9 +280,9 @@
                                     </div>
                                 </div>
                                 <div class="form_group">
-                                    <label class="form_label">Email*</label>
+                                    <label for="email" class="form_label">Email*</label>
                                     <div class="input_wrap">
-                                        <input required type="email" class="form_input" placeholder="Your email address"
+                                        <input id="email" required type="email" class="form_input" placeholder="Your email address"
                                             name="email">
                                         <svg class="valid_check" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
